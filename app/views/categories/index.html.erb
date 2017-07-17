@@ -1,0 +1,14 @@
+<h2> List of Categories: </h2>
+
+
+    <% @categories.each do |category| %>
+    <ul>
+      <br>
+      <strong> <%= link_to category.title, category_path(category) %> </strong> <br>
+               <%= link_to "Edit", edit_category_path(category) %>
+               <%= link_to "Delete", category_path(category) %>
+    </ul>
+
+    <% end %>
+
+    <%= link_to "Create New Category", new_category_path %>
