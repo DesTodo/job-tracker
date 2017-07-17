@@ -14,3 +14,15 @@ Category: <%= @job.category.title %>
 <br>
 
 Company: <%= link_to @job.company.name, company_path(@job.company) %>
+<br><br><br>
+
+Comments:
+<ol>
+   <% @job.comments.each do |comment| %>
+     <li><%= comment.content %>
+        <%= link_to "Edit", edit_job_comment_path(@job, comment)%>
+        <%= link_to "Delete", job_comment_path(@job, comment), method: :delete%><br><br>
+      </li>
+   <% end %>
+ </ol>
+ <%= link_to "New Comment", new_job_comment_path(@job) %>
