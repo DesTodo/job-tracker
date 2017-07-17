@@ -1,4 +1,15 @@
-<%= @category.title %>
+
+<br>
+<h2> Category: <%= @category.title %> </h2>
+
+<h3> Here are the jobs in this category</h3>
+<% @category.jobs.each do |job|%>
+
+  <ul>
+      <%= job.title %> at <%=  link_to job.company.name, company_path(job.company) %>
+  </ul>
+
+  <% end %>
 <br> <br>
 <%= link_to "Edit", edit_category_path(@category) %>
 <br> <br> <br> <br>

@@ -5,8 +5,15 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.create(category_params)
-    redirect_to category_path(@category)
+    @category = Category.new(category_params)
+    if Category.find_by(title: category_params[:title]) != nil
+      flash[:alert] = "Category with the title: #{@category.title} already exists! You can create a new one."
+      redirect_to new_category_path
+    else
+      @category.save
+      flash[:success] = "new category created with title: #{@category.title}"
+      redirect_to category_path(@category)
+    end
   end
 
   def show

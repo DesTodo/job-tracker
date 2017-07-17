@@ -3,10 +3,10 @@
 <ul>
   <% @companies.each do |company| %>
   <li class=company_<%= company.id %>>
-    <%= link_to company.name, company_path(company) %>:
+    <strong> <%= link_to company.name, company_path(company) %> </strong> <br>
     <%= link_to "Create New Job", new_company_job_path(company) %>
     <%= link_to "Edit", edit_company_path(company) %>
-    <%= link_to "Delete", company_path(company), method: "delete" %>
+    <%= link_to "Delete", company_path(company), method: "delete" %><br><br><br>
   </li>
   <% end %>
 </ul>
